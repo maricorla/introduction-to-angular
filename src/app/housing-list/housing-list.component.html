@@ -1,0 +1,7 @@
+<label for="location-search">Search for a new place</label>
+<input placeholder="Ex: Chicago" id="location-search" #search>
+<button (click)="searchHousingLocation(search.value)" >Search</button>
+<article *ngFor="let location of results">
+    <p>{{location.name}}</p>
+    <button (click)="selectHousingLocation(location)">View</button>
+</article>
