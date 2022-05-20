@@ -10,7 +10,9 @@ export class HousingListComponent implements OnInit {
 
   @Input() locationList: IHousingLocation[] = [];
   results: IHousingLocation[] = [];
-  @Output() selectedLocationEvent = new EventEmitter <IHousingLocation>();
+  @Output() selectedLocationEvent = new EventEmitter<IHousingLocation | null>();
+  
+  search: string = '';
 
   constructor() { }
 
@@ -24,6 +26,12 @@ export class HousingListComponent implements OnInit {
 
   selectHousingLocation(location: IHousingLocation) {
     this.selectedLocationEvent.emit(location)
+  }
+
+  remove() {
+    this.search = '';
+    this.selectedLocationEvent.emit(null);
+    this.results = [];
   }
 
 }
